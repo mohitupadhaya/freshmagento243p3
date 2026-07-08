@@ -1,0 +1,24 @@
+```gitignore
+# Composer
+/vendor/
+
+# Generated code
+/generated/
+/var/
+
+# Magento environment
+/app/etc/env.php
+/pub/media/
+/pub/static/*
+
+# Keep pub/static/.htaccess
+!/pub/static/.htaccess
+
+# IDE
+/.idea/
+/.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+```

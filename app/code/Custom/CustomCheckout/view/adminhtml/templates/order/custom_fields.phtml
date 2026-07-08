@@ -1,0 +1,24 @@
+<?php /** @var \Magento\Backend\Block\Template $block */ ?>
+<?php $order = $block->getOrder(); ?>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <table class="admin__table-secondary">
+            <tr>
+                <th><?= $block->escapeHtml(__('Delivery Date')) ?></th>
+                <td><?= $block->escapeHtml($order->getDeliveryDate() ?? '—') ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Delivery Time')) ?></th>
+                <td><?= $block->escapeHtml($order->getDeliveryTime() ?? '—') ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Shipping Instructions')) ?></th>
+                <td><?= $block->escapeHtml($order->getShippingInstruction() ?? '—') ?></td>
+            </tr>
+        </table>
+    </div>
+</section>

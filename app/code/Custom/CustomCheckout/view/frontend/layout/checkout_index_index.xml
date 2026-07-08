@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+
+                                                        <!--
+                                                        ╔══════════════════════════════════════════════════════╗
+                                                        ║  DELIVERY DATE & DELIVERY TIME                       ║
+                                                        ║  Placed inside shipping-address-fieldset             ║
+                                                        ║  Renders within the address form, ABOVE shipping     ║
+                                                        ║  method selection. sortOrder 250/251 places them     ║
+                                                        ║  after standard address fields (max ~200).           ║
+                                                        ╚══════════════════════════════════════════════════════╝
+                                                        -->
+                                                        <item name="shipping-address-fieldset" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+
+                                                                <!-- ── Delivery Date ─────────────────────── -->
+                                                                <item name="delivery_date" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/date</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="customScope" xsi:type="string">shippingAddress.custom_attributes</item>
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        <item name="elementTmpl" xsi:type="string">ui/form/element/date</item>
+                                                                        <item name="options" xsi:type="array">
+                                                                            <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                                                                            <item name="showOn" xsi:type="string">button</item>
+                                                                            <item name="minDate" xsi:type="string">+1d</item>
+                                                                        </item>
+                                                                        <item name="tooltip" xsi:type="array">
+                                                                            <item name="description" xsi:type="string" translate="true">Select your preferred delivery date. Earliest available is tomorrow.</item>
+                                                                        </item>
+                                                                        <item name="additionalClasses" xsi:type="string">vendor-delivery-date</item>
+                                                                    </item>
+                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom_attributes.delivery_date</item>
+                                                                    <item name="label" xsi:type="string" translate="true">Preferred Delivery Date</item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="visible" xsi:type="boolean">true</item>
+                                                                    <item name="sortOrder" xsi:type="string">250</item>
+                                                                    <item name="validation" xsi:type="array">
+                                                                        <item name="required-entry" xsi:type="boolean">false</item>
+                                                                    </item>
+                                                                </item>
+
+                                                                <!-- ── Delivery Time ─────────────────────── -->
+                                                                <item name="delivery_time" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="customScope" xsi:type="string">shippingAddress.custom_attributes</item>
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                                        <item name="tooltip" xsi:type="array">
+                                                                            <item name="description" xsi:type="string" translate="true">Choose a preferred time window for delivery.</item>
+                                                                        </item>
+                                                                        <item name="additionalClasses" xsi:type="string">vendor-delivery-time</item>
+                                                                    </item>
+                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom_attributes.delivery_time</item>
+                                                                    <item name="label" xsi:type="string" translate="true">Preferred Delivery Time</item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="visible" xsi:type="boolean">true</item>
+                                                                    <item name="sortOrder" xsi:type="string">251</item>
+                                                                    <item name="options" xsi:type="array">
+                                                                        <item name="0" xsi:type="array">
+                                                                            <item name="value" xsi:type="string"></item>
+                                                                            <item name="label" xsi:type="string" translate="true">-- No Preference --</item>
+                                                                        </item>
+                                                                        <item name="1" xsi:type="array">
+                                                                            <item name="value" xsi:type="string">08:00-12:00</item>
+                                                                            <item name="label" xsi:type="string" translate="true">Morning (8:00 AM – 12:00 PM)</item>
+                                                                        </item>
+                                                                        <item name="2" xsi:type="array">
+                                                                            <item name="value" xsi:type="string">12:00-16:00</item>
+                                                                            <item name="label" xsi:type="string" translate="true">Afternoon (12:00 PM – 4:00 PM)</item>
+                                                                        </item>
+                                                                        <item name="3" xsi:type="array">
+                                                                            <item name="value" xsi:type="string">16:00-20:00</item>
+                                                                            <item name="label" xsi:type="string" translate="true">Evening (4:00 PM – 8:00 PM)</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="validation" xsi:type="array">
+                                                                        <item name="required-entry" xsi:type="boolean">false</item>
+                                                                    </item>
+                                                                </item>
+
+                                                            </item>
+                                                        </item>
+                                                        <!-- END: shipping-address-fieldset -->
+
+                                                        <!--
+                                                        ╔══════════════════════════════════════════════════════╗
+                                                        ║  SHIPPING INSTRUCTION                                ║
+                                                        ║  "after-methods-fields" is a Magento container that  ║
+                                                        ║  renders immediately AFTER the shipping method list. ║
+                                                        ║  sortOrder 350 keeps it right below the methods.     ║
+                                                        ╚══════════════════════════════════════════════════════╝
+                                                        -->
+                                                        <item name="after-methods-fields" xsi:type="array">
+                                                            <item name="component" xsi:type="string">uiComponent</item>
+                                                            <item name="sortOrder" xsi:type="string">350</item>
+                                                            <item name="children" xsi:type="array">
+
+                                                                <!-- ── Shipping Instruction ───────────────── -->
+                                                                <item name="shipping_instruction" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="customScope" xsi:type="string">shippingAddress.custom_attributes</item>
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
+                                                                        <item name="rows" xsi:type="number">4</item>
+                                                                        <item name="tooltip" xsi:type="array">
+                                                                            <item name="description" xsi:type="string" translate="true">Add any special instructions for the delivery driver, e.g. "Leave at back door".</item>
+                                                                        </item>
+                                                                        <item name="additionalClasses" xsi:type="string">vendor-shipping-instruction</item>
+                                                                    </item>
+                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom_attributes.shipping_instruction</item>
+                                                                    <item name="label" xsi:type="string" translate="true">Shipping Instructions</item>
+                                                                    <item name="placeholder" xsi:type="string" translate="true">e.g. Leave at front door, Ring bell twice…</item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="visible" xsi:type="boolean">true</item>
+                                                                    <item name="sortOrder" xsi:type="string">351</item>
+                                                                    <item name="validation" xsi:type="array">
+                                                                        <item name="required-entry" xsi:type="boolean">false</item>
+                                                                        <item name="max_text_length" xsi:type="number">500</item>
+                                                                    </item>
+                                                                </item>
+
+                                                            </item>
+                                                        </item>
+                                                        <!-- END: after-methods-fields -->
+
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

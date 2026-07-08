@@ -1,0 +1,54 @@
+type Employee {
+    employee_id: Int
+    first_name: String
+    last_name: String
+    email: String
+    phone_number: String
+    department: String
+    designation: String
+    photo: String
+    state: String
+    city: String
+    distt: String
+    pincode: String
+    status: Int
+    created_at: String
+    updated_at: String
+}
+
+input EmployeeInput {
+    first_name: String!
+    last_name: String!
+    email: String!
+    phone_number: String
+    department: String
+    designation: String
+    photo: String
+    state: String
+    city: String
+    distt: String
+    pincode: String
+    status: Int
+}
+
+type EmployeeResponse {
+  success: Boolean!
+  message: String!
+  employee: Employee
+}
+
+type Query {
+    employee(employee_id: Int!): Employee
+    employees: [Employee] @resolver(class: "Custom\\Graphql\\GraphQl\\Query\\Employee")
+}
+
+type Mutation {
+    createEmployee(input: EmployeeInput!): EmployeeResponse
+        @resolver(class: "Custom\\Graphql\\GraphQl\\Mutation\\CreateEmployee")
+
+    updateEmployee(employee_id: Int!, input: EmployeeInput!): EmployeeResponse
+        @resolver(class: "Custom\\Graphql\\GraphQl\\Mutation\\UpdateEmployee")
+
+    deleteEmployee(employee_id: Int!): EmployeeResponse
+        @resolver(class: "Custom\\Graphql\\GraphQl\\Mutation\\DeleteEmployee")
+}
