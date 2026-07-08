@@ -9,6 +9,6 @@ class Employee extends AbstractModel
     {
 
 
-    $this->_init(\Custom\Graphql\Model\ResourceModel\Employee::class);
+    $this->_init(\Custom\Graphql\Model\ResourceModel\Employee::class)
     }
 }
